@@ -10,6 +10,13 @@ module.exports = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        primary: "var(--primary)",
+        secondary: "var(--secondary)",
+        accent: "var(--accent)",
+        // muted: "#f9f9f9",
+      },
+      fontFamily: {
+        sans: ['Lato', 'sans-serif'], // Use 'Roboto' as the primary font
       },
     },
   },

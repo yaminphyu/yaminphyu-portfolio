@@ -1,0 +1,35 @@
+.container {
+    @apply flex justify-around items-center w-full h-20 p-3 box-border border-2 border-white fixed top-0;
+}
+
+.wrapper {
+    @apply flex items-center;
+}
+
+.menu {
+    @apply flex space-x-10 lg:space-x-16;
+}
+
+.item {
+    @apply inline-block mr-2;
+}
+
+.item-active {
+    @apply text-primary text-lg;
+}
+
+.item-unactive {
+    @apply text-accent hover:text-primary text-lg;
+}
+
+.title {
+    @apply text-secondary text-2xl;
+}
+
+.item-underline {
+    @apply underline underline-offset-8 decoration-2;
+}
+
+.hire-me {
+    @apply border-2 border-secondary bg-secondary text-white px-4 py-1 rounded-full text-base;
+}
