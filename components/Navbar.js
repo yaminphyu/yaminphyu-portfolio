@@ -1,16 +1,25 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { navigation } from '@/config';
 import usePath from '@/hooks/usePath';
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from '@/styles/Navbar.module.css';
+import { MenuToggle } from './MenuToggle';
+import { Menu } from './Menu';
+import { MobileToggleContext } from '@/contexts/MobileToggleContext';
+import useMenuAnimation from '@/hooks/useMenuAnimation';
 
 export default function Navbar() {
   const pathname = usePath();
   const WEBSITE_NAME = process.env.WEBSITE_NAME;
 
+  const { isToggle, setIsToggle } = useContext(MobileToggleContext);
+
+  const scope = useMenuAnimation(isToggle);
+
   return (
     <>
       <div className={styles.container}>
-        <div></div>
+        <div className='hidden md:block'></div>
         <div className={styles.wrapper}>
           <ul className={styles.menu}>
             {
@@ -33,6 +42,18 @@ export default function Navbar() {
         </div>
         <div className={styles.wrapper}>
           <button className={styles['hire-me']}>Hire me</button>
+        </div>
+        <div 
+          className={styles['mobile-logo']}
+        >
+          <h2>{WEBSITE_NAME}</h2>
+        </div>
+        <div 
+          ref={scope}
+          className={styles['mobile-wrapper']}
+        >
+          <Menu />
+          <MenuToggle toggle={() => setIsToggle(!isToggle)} />
         </div>
       </div>
     </>
