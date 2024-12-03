@@ -1,7 +1,14 @@
 .container {
-    @apply flex justify-between md:justify-around items-center w-full h-20 p-3 box-border bg-slate-50 fixed top-0;
+    @apply flex justify-center items-center w-full h-20 p-3 box-border bg-slate-100 fixed top-0;
 }
 
+.pc-wrapper {
+    @apply hidden md:flex justify-between items-center md:w-full lg:w-3/4 h-20 p-3 box-border;
+}
+
+.mobile-container {
+    @apply md:hidden flex justify-between items-center w-full h-20 p-3 box-border fixed;
+}
 .wrapper {
     @apply hidden md:flex items-center;
 }

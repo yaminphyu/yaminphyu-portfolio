@@ -16,44 +16,55 @@ export default function Navbar() {
 
   const scope = useMenuAnimation(isToggle);
 
+  const handleHireMe = () => {
+    console.log('hello');
+    alert('Hire me...');
+  }
+
   return (
     <>
       <div className={styles.container}>
-        <div className='hidden md:block'></div>
-        <div className={styles.wrapper}>
-          <ul className={styles.menu}>
-            {
-              navigation.map((item, index) => (
-                <li 
-                  key={index} 
-                  className={`
-                    ${styles.item}
-                    ${(pathname === item.href && item.name !== WEBSITE_NAME) ? styles['item-active'] : item.name === WEBSITE_NAME ? styles.title : styles['item-unactive']}
-                  `}
-                >
-                  <a
-                    className={`${(pathname === item.href && item.name !== WEBSITE_NAME) ? styles['item-underline'] : ''}`}
-                    href={item.href}
-                  >{item.name}</a>
-                </li>
-              ))
-            }
-          </ul>
+        <div className={styles['pc-wrapper']}>
+          <div className={styles.wrapper}>
+            <ul className={styles.menu}>
+              {
+                navigation.map((item, index) => (
+                  <li 
+                    key={index} 
+                    className={`
+                      ${styles.item}
+                      ${(pathname === item.href && item.name !== WEBSITE_NAME) ? styles['item-active'] : item.name === WEBSITE_NAME ? styles.title : styles['item-unactive']}
+                    `}
+                  >
+                    <a
+                      className={`${(pathname === item.href && item.name !== WEBSITE_NAME) ? styles['item-underline'] : ''}`}
+                      href={item.href}
+                    >{item.name}</a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+          <div className={styles.wrapper}>
+            <button 
+              className={styles['hire-me']}
+              onClick={handleHireMe}
+            >Hire me</button>
+          </div>
         </div>
-        <div className={styles.wrapper}>
-          <button className={styles['hire-me']}>Hire me</button>
-        </div>
-        <div 
-          className={styles['mobile-logo']}
-        >
-          <h2>{WEBSITE_NAME}</h2>
-        </div>
-        <div 
-          ref={scope}
-          className={styles['mobile-wrapper']}
-        >
-          <Menu />
-          <MenuToggle toggle={() => setIsToggle(!isToggle)} />
+        <div className={styles['mobile-container']}>
+          <div 
+            className={styles['mobile-logo']}
+          >
+            <h2>{WEBSITE_NAME}</h2>
+          </div>
+          <div 
+            ref={scope}
+            className={styles['mobile-wrapper']}
+          >
+            <Menu />
+            <MenuToggle toggle={() => setIsToggle(!isToggle)} />
+          </div>
         </div>
       </div>
     </>
